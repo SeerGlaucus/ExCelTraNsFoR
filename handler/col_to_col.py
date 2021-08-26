@@ -1,5 +1,6 @@
 import re
 
+
 def col_to_col(wbs, script):
     groups = re.search(r'(\d+)\[(\d+)\]\[(\d+)\.\.\.,(\d+)\]->(\d+)\[(\d+)\]\[(\d+)\.\.\.,(\d+)\]', script)
     from_wb = int(groups.group(1))
