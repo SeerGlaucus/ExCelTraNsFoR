@@ -90,7 +90,9 @@ def main_method():
     index = input("请选择要执行的脚本【输入数字回车即可】：")
     sc_file = script[int(index) - 1]
     print("\n开始执行脚本：" + sc_file)
-    engine.call(data_path, sc_file)
+    flag = engine.call(data_path, sc_file)
+    if flag is False:
+        return
     print("执行完成^_^，执行时间为：" + time.strftime('%Y/%m/%d %H:%M:%S', time.localtime(time.time())))
     print("")
     print(" ___  ___      ___      ___      ___________      ___  ___  ")

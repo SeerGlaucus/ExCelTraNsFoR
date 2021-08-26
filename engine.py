@@ -12,8 +12,13 @@ def call(excel_path, script_path):
     while line:
         line = re.sub(re.compile(r'\s+'), '', line)
         if not line.startswith("#"):
-            handlers.handler(wbs, match.match(line), line)
+            try:
+                handlers.handler(wbs, match.match(line), line)
+            except:
+                print("执行失败,引起失败的语句为：" + line)
+                return False
         line = file.readline()
     for wb in wbs:
         if wb.changed is True:
             wb.save()
+    return True
